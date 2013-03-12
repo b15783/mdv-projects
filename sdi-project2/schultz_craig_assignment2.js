@@ -9,7 +9,8 @@ alert("Dont forget to open you console so you can see the output");
 // --VARIABLES--
 
 var name = "Jack",
-	hungerLevel = 10
+	hungerLevel = 10,
+	animals = ["Tigers", "Bears", "Lions", "Robots"]
 
 ;
 
@@ -25,7 +26,7 @@ var getDayOrNight = function(){
 	" all around you!");
 };
 
-// BOOLEAN FUNCTION
+// BOOLEAN PROCEDURE
 
 var isHeCold = function(shoes, shirt){
 	if (shoes || shirt){
@@ -33,7 +34,7 @@ var isHeCold = function(shoes, shirt){
 	else {return("freezing");}
 };	
 
-// NUMBER FUNCTION
+// NUMBER FUNCTION AND WHILE LOOP
 
 var getFood = function(count){
 	var bananas = count;
@@ -44,14 +45,22 @@ var getFood = function(count){
 	return(bananas / 5);
 }; 
  
-// STRING FUNCTION
+// STRING FUNCTION WITH CONCATENATION
 
 var sortBananas = function(color,taste){
 	var bananaSummary = ("The " + color + " bananas taste " + taste + "!");
 	console.log(bananaSummary);
 };	
 
-// ARRAY FUNCTION
+// ARRAY FUNCTION + FOR LOOP
+
+var countAnimals = function(){
+	for (var i = 0; i < animals.length; i++) {
+		console.log("I found some " + animals[i]);
+	};
+	return animals.length;
+
+};
 
 // MAIN SECTION
 
@@ -72,6 +81,14 @@ sortBananas("yellow", "sweet");
 sortBananas("green", "salty");
 sortBananas("black", "bitter");
 
+console.log("Now that you are full, you start to check out the animals on this island.");
+
+var animalTypes = countAnimals();
+console.log("I found " + animalTypes + " different kinds of animals.");
+
+console.log("What a busy first day!  I woke up in a strange place, realized that I was " + hotOrCold + ", gathered " + foodAmount + " banana bunches, and discovered " + animalTypes + " different species.");
+console.log("I wonder what tomorrow will bring.");
+console.log("The End.");
 
 
 
