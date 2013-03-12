@@ -8,8 +8,7 @@ alert("Dont forget to open you console so you can see the output");
 
 // --VARIABLES--
 
-var name = "Jack",
-	hungerLevel = 10,
+var	hungerLevel = 10,
 	animals = ["Tigers", "Bears", "Lions", "Robots"]
 
 ;
