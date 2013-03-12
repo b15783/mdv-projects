@@ -8,7 +8,7 @@ alert("Dont forget to open you console so you can see the output");
 
 // --VARIABLES--
 
-
+var hungerLevel = 10
 
 ;
 
@@ -33,7 +33,15 @@ var isHeCold = function(shoes, shirt){
 };	
 
 // NUMBER FUNCTION
- 
+
+var getFood = function(count){
+	var bananas = count;
+	while (count > 0) {
+		console.log("Picked up a banana.");
+		count--;
+		};
+	return(bananas / 5);
+}; 
  
 // STRING FUNCTION
 
@@ -46,7 +54,12 @@ getDayOrNight();
 var hotOrCold = isHeCold(true, true);
 	console.log("The next thing that you realize is that you are " + hotOrCold + ".");
 	
-//console.log("The next thing that you realize is that there are dead bodies all around you!");
+console.log("You suddenly realize that you are on an unfamiliar island and you wonder how you got there");
+console.log("You think to start gathering food.  After looking around, you see lots of bananas on the ground.");
+
+var foodAmount = getFood(hungerLevel);
+	
+console.log(foodAmount + " bunches of bananas should be enough!");
 
 	
 	
