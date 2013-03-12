@@ -8,7 +8,8 @@ alert("Dont forget to open you console so you can see the output");
 
 // --VARIABLES--
 
-var hungerLevel = 10
+var name = "Jack",
+	hungerLevel = 10
 
 ;
 
@@ -45,6 +46,11 @@ var getFood = function(count){
  
 // STRING FUNCTION
 
+var sortBananas = function(color,taste){
+	var bananaSummary = ("The " + color + " bananas taste " + taste + "!");
+	console.log(bananaSummary);
+};	
+
 // ARRAY FUNCTION
 
 // MAIN SECTION
@@ -59,7 +65,17 @@ console.log("You think to start gathering food.  After looking around, you see l
 
 var foodAmount = getFood(hungerLevel);
 	
-console.log(foodAmount + " bunches of bananas should be enough!");
+console.log(foodAmount + " bunches of bananas should be enough for now!");
+console.log("After eating some bananas, you realize there are some different kinds.");
+
+sortBananas("yellow", "sweet");
+sortBananas("green", "salty");
+sortBananas("black", "bitter");
+
+
+
+
+
 
 	
 	
