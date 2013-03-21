@@ -8,7 +8,20 @@ alert("Dont forget to open you console so you can see the output");
 
 // Global variables
 
-var banana = {
+var mainChar = {
+	generous: true,
+	giveFood: function(result){
+		if (mainChar.generous === true){
+			result = "Sure, you my have some of my bananas.";
+			//give some bananas
+		}
+		else {
+			result = "No, you no take bananas!";
+		}
+		return result;
+	}
+},
+	banana = {
 	color: [
 		"yellow",
 		"green",
@@ -25,9 +38,12 @@ var banana = {
 		};
 	}
 };
-
+console.log("Today, you meet another survivor who is stranded on the island with you.");
 console.log("The stranger asks you how the bananas taste.");
 banana.summary();
+console.log("The stranger says, 'I'm very hungry, may I have a banana?");
+var foodReply = mainChar.giveFood();
+console.log(foodReply);
 
 console.log("After searching for casualties, you find the following ones:");
 var reportCasualties = function(json) {
