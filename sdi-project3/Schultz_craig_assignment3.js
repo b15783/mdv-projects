@@ -54,3 +54,26 @@ var reportCasualties = function(json) {
 };
 
 reportCasualties(json);
+
+console.log("We should probably bury these survivors before the animals start messing with them.");
+
+var countBodies = function(json){
+	var count = 0,
+		depth = 0;
+	while (count < json.casualties.length){
+		var digHole = function(){
+			while (depth < 6){
+				//dig
+				console.log("Dug another foot into the ground!");
+				depth ++;
+			}
+			console("Ah, we have a " + depth + " foot deep grave");
+		};
+		//put the body in the grave.
+		console.log("We put " + json.casualties[count].name + " in the grave.");
+		buryBody(count);
+		count ++;
+	}
+};
+countBodies(json);
+
