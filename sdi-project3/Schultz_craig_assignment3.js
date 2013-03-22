@@ -67,11 +67,13 @@ var countBodies = function(json){
 				console.log("Dug another foot into the ground!");
 				depth ++;
 			}
-			console("Ah, we have a " + depth + " foot deep grave");
+			console.log("Ah, we have a " + depth + " foot deep grave");
 		};
 		//put the body in the grave.
+		digHole();
 		console.log("We put " + json.casualties[count].name + " in the grave.");
 		buryBody(count);
+		depth = 0;
 		count ++;
 	}
 };
