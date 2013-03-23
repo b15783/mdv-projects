@@ -168,5 +168,24 @@ else{
 //End of Problem 3
 
 //Problem 4
-//
+//Title-case a string
+
+function splitStringCaseMod(myString){
+	var splitPoint = myString.indexOf(" "),
+		firstWord = myString.substr(0, splitPoint),
+		secondWord = myString.substr(splitPoint+1),
+		firstWordRemainder = firstWord.substring(1).toLowerCase();
+		secondWordRemainder = secondWord.substring(1).toLowerCase();
+		firstWordModded = firstWord[0].toUpperCase() + firstWordRemainder;
+		secondWordModded = secondWord[0].toUpperCase() + secondWordRemainder;
+		result = firstWordModded + " " + secondWordModded
+	return result;
+}
+
+console.log("Problem 4");
+myString = "crAig schuLTz";
+casedWords = splitStringCaseMod(myString);
+console.log(casedWords);
+
+
 //alert("JavaScript works!");
