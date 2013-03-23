@@ -7,16 +7,20 @@
 // Problem 1
 // Does a string follow a 123-456-7890 pattern like a phone number?
 
+//  MAKEUP: This is where I lost points before, in PROJECT 3.  I did not declare global 
+//  variables and functions at the beginning, and putting the main code, function calls, 
+//  and console logs at the bottom.  The script below is formatted better.
+
+
 function verifyPhone(phoneNumber){
 	var validPhone = true,
-		dashes,
+		dashes = 0,
 		firstDash = phoneNumber.indexOf("-"),
 		lastDash = phoneNumber.lastIndexOf("-"),
 		areaCode = phoneNumber.substr(0, firstDash),
 		prefix = phoneNumber.substr(firstDash + 1, 3),
 		lastFourDigits = phoneNumber.substr(lastDash + 1)
 	;
-	
 	// Checks to make sure there is more than one dash in the number
 	if (firstDash === lastDash) {
 		validPhone = false;
@@ -57,17 +61,13 @@ function verifyPhone(phoneNumber){
 		validPhone = false;
 	}
 	
-	matches = phoneNumber.match(/[\D]/g);
-	dashes = [];
-	for (i = 0, length = matches.length; i < length; i++){
-		match = matches[i];
-		dashes.push(match);
-	}
-	if (dashes.length != 2){
+	if (phoneNumber.length != 12){
 		validPhone = false;
-	}
+	};
 	if (validPhone != null || validPhone != "" && typeof validPhone === "boolean"){
+	//*returns Boolean*
 		return validPhone;
+		
 	}
 		else{
 			return console.log("An error has occurred!");
@@ -84,5 +84,11 @@ if (verified){
 	else{
 		console.log("The phone number " + phone + " does not follow the correct pattern.");
 	}
+// End of Problem 1
+	
+// Problem 2
+// Does a string follow an aaa@bbb.ccc pattern like an email address?
+
+
 
 alert("JavaScript works!");
