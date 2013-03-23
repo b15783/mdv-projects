@@ -76,6 +76,7 @@ function verifyPhone(phoneNumber){
 	
 };
 
+console.log("Problem 1:");
 phone = "123-456-7890";
 verified = verifyPhone(phone);
 if (verified){
@@ -94,7 +95,8 @@ function checkValidEmail(email){
 	var validEmail = true,
 		atSign = email.indexOf("@"),
 		dot = email.indexOf(".");
-		
+//  MAKEUP: --  In Project 1, I lost points for using the assignment operator (=) in my 
+//  conditionals.  Below is the proper use of conditional evaluations.		
 	if (atSign === -1){
 		validEmail = false;
 		console.log(validEmail);
@@ -126,17 +128,45 @@ function checkValidEmail(email){
 		}
 };
 
+console.log("Problem 2:");
 emailAddress = "ki4npz@fullsail.edu";
 valid = checkValidEmail(emailAddress);
 if (valid){
 	console.log("The email address " + emailAddress + " is formatted correctly.");
 }
-	else{
-		console.log("The email address " + emailAddress + " is NOT formatted correctly.");
-	}
+else{
+	console.log("The email address " + emailAddress + " is NOT formatted correctly.");
+}
 //End of Problem 2
 
 //Problem 3
+//Is the string a URL
 
+function checkURL(address){
+	var satisfactory = false,
+		size = address.indexOf(":"),
+		protocol = address.substr(0, size);
+		
+		if (protocol === "http"){
+			satisfactory = true;
+		}
+		else if (protocol ==="https"){
+			satisfactory = true;
+		}
+		return satisfactory;
+}
 
+console.log("Problem 3:");
+address = "https://www.fullsail.edu/";
+sat = checkURL(address);
+if (sat){
+	console.log("The web address " + address + " is valid.");
+}
+else{
+	console.log("The address " + address + " is not a valid web address.");
+}
+//End of Problem 3
+
+//Problem 4
+//
 //alert("JavaScript works!");
