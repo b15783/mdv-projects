@@ -89,6 +89,54 @@ if (verified){
 // Problem 2
 // Does a string follow an aaa@bbb.ccc pattern like an email address?
 
+function checkValidEmail(email){
+
+	var validEmail = true,
+		atSign = email.indexOf("@"),
+		dot = email.indexOf(".");
+		
+	if (atSign === -1){
+		validEmail = false;
+		console.log(validEmail);
+	}
+	if (dot === -1){
+		validEmail = false;
+		console.log(validEmail);
+	}
+	if (atSign > dot){
+		validEmail = false;
+		console.log(validEmail);
+	}
+	if (atSign === 0){
+		validEmail = false;
+		console.log(validEmail);
+	}
+	if (dot === email.length){
+		validEmail = false;
+		console.log(validEmail);
+	}
+	if (validEmail != null || validEmail != "" && typeof validEmail === "boolean"){
+	//*returns Boolean*
+		return validEmail;
+		
+	}
+		else{
+			return console.log("An error has occurred!");
+			
+		}
+};
+
+emailAddress = "ki4npz@fullsail.edu";
+valid = checkValidEmail(emailAddress);
+if (valid){
+	console.log("The email address " + emailAddress + " is formatted correctly.");
+}
+	else{
+		console.log("The email address " + emailAddress + " is NOT formatted correctly.");
+	}
+//End of Problem 2
+
+//Problem 3
 
 
-alert("JavaScript works!");
+//alert("JavaScript works!");
