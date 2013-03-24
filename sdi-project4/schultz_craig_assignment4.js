@@ -264,5 +264,23 @@ console.log(matchResults);
 //End of Problem 7
 
 //Problem 8
+// Find the number of hours of days difference between two dates.
+
+var day1 = new Date("April 1, 2013"),
+	day2 = new Date("April 18, 2013"),
+	difference,
+	hoursOrDays = "days";
+	
+function getDateDifference(fromDate, toDate, interval){
+	difference = toDate.getDate() - fromDate.getDate();
+	if (interval === "hours"){
+		difference = difference * 24;
+	}
+	return difference;
+
+};
+console.log("Problem 8:");
+results = getDateDifference(day1, day2, hoursOrDays);
+console.log(results);
 
 //alert("JavaScript works!");
