@@ -354,4 +354,21 @@ console.log("The sum of the numbers is " + total);
 //Given an array of objects and the name of a key, return the array sorted by the value
 //of that key.
 
-//alert("JavaScript works!");
+var arrayOfObjects = [{a:2, b:2},{a:2, b:3},{a:1, b:2},{a:1, b:1}],
+	key = "a";
+
+function sortMyArray(arrayO, key){
+	return arrayO.sort(function(a, b){
+		var x = a[key],
+			y = b[key];
+			return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+	});
+};
+
+console.log("Problem 12:");
+console.log(arrayOfObjects);
+console.log("sorted:");
+sortedArray = sortMyArray(arrayOfObjects, key);
+console.log(sortedArray);
+
+//End of Problem 12!
