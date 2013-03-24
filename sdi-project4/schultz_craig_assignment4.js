@@ -11,7 +11,7 @@
 //  variables and functions at the beginning, and putting the main code, function calls, 
 //  and console logs at the bottom.  The script below is formatted better.
 
-
+var phone = "123-456-7890";
 function verifyPhone(phoneNumber){
 	var validPhone = true,
 		dashes = 0,
@@ -77,7 +77,6 @@ function verifyPhone(phoneNumber){
 };
 
 console.log("Problem 1:");
-phone = "123-456-7890";
 verified = verifyPhone(phone);
 if (verified){
 	console.log("The phone number " + phone + " follows the correct pattern!");
@@ -90,6 +89,7 @@ if (verified){
 // Problem 2
 // Does a string follow an aaa@bbb.ccc pattern like an email address?
 
+var emailAddress = "ki4npz@fullsail.edu";
 function checkValidEmail(email){
 
 	var validEmail = true,
@@ -129,7 +129,6 @@ function checkValidEmail(email){
 };
 
 console.log("Problem 2:");
-emailAddress = "ki4npz@fullsail.edu";
 valid = checkValidEmail(emailAddress);
 if (valid){
 	console.log("The email address " + emailAddress + " is formatted correctly.");
@@ -170,6 +169,7 @@ else{
 //Problem 4
 //Title-case a string
 
+var myString = "crAig schuLTz";
 function splitStringCaseMod(myString){
 	var splitPoint = myString.indexOf(" "),
 		firstWord = myString.substr(0, splitPoint),
@@ -183,7 +183,6 @@ function splitStringCaseMod(myString){
 }
 
 console.log("Problem 4:");
-myString = "crAig schuLTz";
 casedWords = splitStringCaseMod(myString);
 console.log(casedWords);
 //End of Problem 4
@@ -191,6 +190,7 @@ console.log(casedWords);
 //Problem 5
 //Given a string that is a list...return a list with the separator changed....
 
+var stringToMod = "a,b,c,d";
 function changeSeparator(stringToModify, firstSep, secondSep){
 	//var moddedString = stringToModify.replaceAll(firstSep, secondSep);
 	var str_hasil = "";
@@ -208,22 +208,61 @@ function changeSeparator(stringToModify, firstSep, secondSep){
 };
 
 console.log("Problem 5:")
-var stringToMod = "a,b,c,d",
-	modString = changeSeparator(stringToMod, ",", "/");
+
+var modString = changeSeparator(stringToMod, ",", "/");
 console.log(modString);
 //End of Problem 5
 
 //Problem 6
 //Format a number to use a specific number of decimal places as for money
 
+var number = 4.5644;
 function setDecimals(number){
 	var newNumber = number.toFixed(2);
 	return newNumber;
 };
 
 console.log("Problem 6:");
-var number = 4.5644;
 fixedNumber = setDecimals(number);
 console.log(fixedNumber);
+//End of Problem 6
+
+//Problem 7
+//Fuzzy-match a number: is the number above or below a number within a certain percent?
+
+var result = "",
+	order = "",
+	analysis = "",
+	firstNumber = 5,
+	secondNumber = 10,
+	percentage = 50;
+function matchNumber(firstNum, secondNum, thirdNum){
+	if (firstNum < secondNum){
+		order = firstNum + " is below " + secondNum + " ";
+	}
+	else if (firstNum > secondNum){
+		order = firstNum + " is above " + secondNum + " ";
+	}
+	else {
+		return console.log(firstNum + " is equal to " + secondNum);
+	}
+	var scope = secondNum*percentage/100,
+		upperLimit = secondNum + scope,
+		lowerLimit = secondNum - scope;
+	if (lowerLimit <= firstNum && firstNum <= upperLimit){
+		result = "and within " + percentage + " percent of " + secondNum;
+	}
+	else {
+		result = "and not within " + percentage + " percent of " + secondNum;
+	}
+	analysis = order + " " + result;
+	return analysis;
+};
+console.log("Problem 7:");
+var matchResults = matchNumber(firstNumber, secondNumber, percentage); 
+console.log(matchResults);
+//End of Problem 7
+
+//Problem 8
 
 //alert("JavaScript works!");
