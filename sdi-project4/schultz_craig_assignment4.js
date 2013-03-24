@@ -268,6 +268,7 @@ console.log(matchResults);
 
 var day1 = new Date("April 1, 2013"),
 	day2 = new Date("April 18, 2013"),
+	datatype,
 	difference,
 	hoursOrDays = "days";
 	
@@ -282,5 +283,22 @@ function getDateDifference(fromDate, toDate, interval){
 console.log("Problem 8:");
 results = getDateDifference(day1, day2, hoursOrDays);
 console.log(results);
+//End of Problem 8
+
+//Problem 9
+//Given a string version of a number, return the value as an actual number.
+
+var number = "42";
+function convertToNumber(numberString){
+	convertedNumber = Number(numberString);
+	return convertedNumber;
+};
+
+console.log("Problem 9:");
+changeThis = convertToNumber(number);
+//dataType = typeof.changeThis;
+console.log("The number is " + changeThis);
+console.log("And it is in fact, a " + typeof(changeThis));
+
 
 //alert("JavaScript works!");
