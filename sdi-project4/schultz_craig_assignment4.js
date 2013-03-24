@@ -214,5 +214,16 @@ console.log(modString);
 //End of Problem 5
 
 //Problem 6
+//Format a number to use a specific number of decimal places as for money
+
+function setDecimals(number){
+	var newNumber = number.toFixed(2);
+	return newNumber;
+};
+
+console.log("Problem 6:");
+var number = 4.5644;
+fixedNumber = setDecimals(number);
+console.log(fixedNumber);
 
 //alert("JavaScript works!");
