@@ -268,7 +268,6 @@ console.log(matchResults);
 
 var day1 = new Date("April 1, 2013"),
 	day2 = new Date("April 18, 2013"),
-	datatype,
 	difference,
 	hoursOrDays = "days";
 	
@@ -296,9 +295,63 @@ function convertToNumber(numberString){
 
 console.log("Problem 9:");
 changeThis = convertToNumber(number);
-//dataType = typeof.changeThis;
 console.log("The number is " + changeThis);
 console.log("And it is in fact, a " + typeof(changeThis));
+//End of Problem 9
 
+//Problem 10
+//Find the smallest value in an array that is greater than a given number
+
+var n = 12,
+	result,
+	arr = [1, 4, 7, 9, 10, 14, 15];
+function minimumGreaterThan(array, number){
+	var numbersLarger = [],
+		smallestNumber;
+	for (i = 0; i < array.length; i++){
+		if (array[i] > number){
+			numbersLarger.push(array[i]);
+		}
+	}
+	smallestNumber = numbersLarger[0];
+	for (j = 0; j < numbersLarger.length; j++){
+		if (smallestNumber > numbersLarger[j]){
+			smallestNumber = numberslarger[j];
+		}
+	}
+	return smallestNumber;
+};
+console.log("Problem 10:");
+minimum = minimumGreaterThan(arr, n);
+console.log("The smallest number greater than " + n + " is " + minimum);
+//End of Problem 10
+
+//Problem 11
+//Find the total value of just the numbers in an array, even if some of the items are not 
+//numbers.
+
+var mixedArray = [1, "pickles", 3, "onions", 5, "10", 6, "SDI"];
+function totalValue(arr){
+	onlyNumbers = [],
+	sum = 0;
+	for (i = 0; i < arr.length; i++){
+		if (typeof arr[i] == "number"){
+			onlyNumbers.push(arr[i]);
+		}
+	}
+	for (j = 0; j < onlyNumbers.length; j++){
+		sum += onlyNumbers[j];
+	}
+	return sum;
+};
+
+console.log("Problem 11:");
+total = totalValue(mixedArray);
+console.log("The sum of the numbers is " + total);
+//End of Problem 11
+
+//Problem 12
+//Given an array of objects and the name of a key, return the array sorted by the value
+//of that key.
 
 //alert("JavaScript works!");
