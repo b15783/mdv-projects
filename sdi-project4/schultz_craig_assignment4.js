@@ -182,10 +182,37 @@ function splitStringCaseMod(myString){
 	return result;
 }
 
-console.log("Problem 4");
+console.log("Problem 4:");
 myString = "crAig schuLTz";
 casedWords = splitStringCaseMod(myString);
 console.log(casedWords);
+//End of Problem 4
 
+//Problem 5
+//Given a string that is a list...return a list with the separator changed....
+
+function changeSeparator(stringToModify, firstSep, secondSep){
+	//var moddedString = stringToModify.replaceAll(firstSep, secondSep);
+	var str_hasil = "";
+	var temp;
+	for (i = 0; i < stringToModify.length; i++){
+		if (stringToModify[i] == firstSep){
+			temp = secondSep;
+		}
+		else{
+			temp = stringToModify[i];
+		}
+		str_hasil += temp;
+	}
+	return str_hasil;
+};
+
+console.log("Problem 5:")
+var stringToMod = "a,b,c,d",
+	modString = changeSeparator(stringToMod, ",", "/");
+console.log(modString);
+//End of Problem 5
+
+//Problem 6
 
 //alert("JavaScript works!");
