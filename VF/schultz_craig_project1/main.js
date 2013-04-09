@@ -3,7 +3,3 @@
 // Project 1
 // VFW 1304
 
-form.onClick = function(event){
-	//do some stuff
-	return;
-}
