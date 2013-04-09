@@ -11,10 +11,20 @@
 		<meta name="MobileOptimized" content="320" />
 		<title>Add Battle Pets</title>
 		<meta name="author" content="Craig Schultz">
+		<script type="text/javascript">
+			function displayStuff () {
+				var petName = document.inputForm.name.value;
+				var petType = document.inputForm.type.vaule;
+				var petLevel = document.inputForm.level.value;
+				var petQuality = document.inputForm.quality.value;
+				
+				document.write("Added " + petName + ", a " + petLevel + " level " + petQuality + petType + " pet.");
+			}
+		</script>
 </head>	
 	<body>
 		<h1>Add Pets</h1>
-		<form id="inputForm" action"#" method="post">
+		<form id="inputForm" action="#" method="post">
 			<fieldset>
 				<legend>Pet Details</legend>
 				<ul id="petDetails">
@@ -54,7 +64,7 @@ it didnt make much sense in this specific application, so I changed the type to
 					<li><input type="checkbox" id="favorite" /><label for="favorite">Favorite?</label></li>
 					<li><input type="hidden" id="entryNumber" />
 					</ul>
-				<input type="submit" id="submit" value="Add pet" />
+				<input type="submit" id="submit" value="Add pet" onclick="displayStuff()" />
 			</fieldset>			
 		</form>
 	</body>
