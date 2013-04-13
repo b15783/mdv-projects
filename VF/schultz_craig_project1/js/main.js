@@ -33,11 +33,11 @@ var addPet = function(){
 		captureData()
 	}
 	else{
-		
+		alert("Pet was not added.");
 	}
 };
 
 //myDiv.appendChild(petList);
-addButton.addEventListener("click", captureData);
+addButton.addEventListener("click", addPet);
 
 
