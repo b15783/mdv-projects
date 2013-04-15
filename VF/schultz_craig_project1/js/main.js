@@ -4,7 +4,7 @@
 // VFW 1304
 
 window.addEventListener("DOMContentLoaded", function(){
-
+	alert(localStorage.value
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
@@ -25,8 +25,36 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	
 	}
-	var familyGroup = ["--Choose a family--", "Aquatic", "Beast", "Critter", "Dragonkin", "Elemental", "Flying", "Humanoid", "Magic", "Mechanical", "Undead"];
+	
+	function getCheckboxValue(){
+		if($('favorite').checked){
+			favoriteValue="yes"
+		}else{
+			favoriteValue="no"
+		}
+	}
+	
+	function saveData(){
+		var id			= Math.floor(Math.random()*100000001);
+		var item 		= {};
+			item.date	= ["Date:", $('captureDate').value];
+			item.family	= ["Family:", $('family').value];
+			item.name	= ["Name:", $('name').value];
+			item.level	= ["Level:", $('level').value];
+			item.qual	= ["Quality:", $('quality').value];
+			item.fav	= ["Is a favorite:", favoriteValue];
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Pet added to list");
+			
+	}
+	
+	var familyGroup = ["--Choose a family--", "Aquatic", "Beast", "Critter", "Dragonkin", "Elemental", "Flying", "Humanoid", "Magic", "Mechanical",
+			"Undead"],
+		favoriteValue="no";
+	
 	makeFamilyGroup();
+	
+	
 	
 	
 	
@@ -34,8 +62,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	//showPets.addEventListener("click", getData);
 	//var clearData = $();
 	//clearData.addEvenListener("click", clearLocal);
-	//var savePet = $('addPetButton');
-	//savePet.addEventListener("click", saveData);
+	var savePet = $('addPetButton');
+	savePet.addEventListener("click", saveData);
 	
 
 });

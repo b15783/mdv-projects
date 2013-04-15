@@ -11,6 +11,7 @@ WoW Battle Pet Tracker
 body {
 	height:100%;
 	background-image:url('../images/subpage.jpg');
+	background-size: 100% 100%;
 	width:  480px;
 	height: 900px;
 	background-repeat:no-repeat;
