@@ -4,7 +4,6 @@
 // VFW 1304
 
 window.addEventListener("DOMContentLoaded", function(){
-	alert(localStorage.value
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
@@ -33,7 +32,21 @@ window.addEventListener("DOMContentLoaded", function(){
 			favoriteValue="no"
 		}
 	}
-	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('inputForm').style.display = "none";
+				$('addNew').style.display = "inline";				
+				break;
+			case "off":
+				$('inputForm').style.display = "block";
+				$('addNew').style.display = "none";	
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
 	function saveData(){
 		var id			= Math.floor(Math.random()*100000001);
 		var item 		= {};
@@ -44,10 +57,34 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.qual	= ["Quality:", $('quality').value];
 			item.fav	= ["Is a favorite:", favoriteValue];
 		localStorage.setItem(id, JSON.stringify(item));
-		alert("Pet added to list");
+		alert("Pet was added to list");
 			
 	}
 	
+	function getData(){
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		$('items').style.display = "display";
+		for(var i=0, j=localStorage.length; i<j; i++){
+			var makeLi = document.createElement('li');
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeLi.appendChild(makeSubList);
+			for(var n in obj){
+				var makeSubLi = document.createElement('li');
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubLi.innerHTML = optSubText;
+			}
+		}		
+		
+	}
 	var familyGroup = ["--Choose a family--", "Aquatic", "Beast", "Critter", "Dragonkin", "Elemental", "Flying", "Humanoid", "Magic", "Mechanical",
 			"Undead"],
 		favoriteValue="no";
@@ -58,8 +95,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	
-	//var showPets = $('showPetButton');
-	//showPets.addEventListener("click", getData);
+	var showPets = $('showPetButton');
+	showPets.addEventListener("click", getData);
 	//var clearData = $();
 	//clearData.addEvenListener("click", clearLocal);
 	var savePet = $('addPetButton');
