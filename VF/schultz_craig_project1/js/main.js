@@ -34,12 +34,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	function toggleControls(n){
 		switch(n){
-			case "on":
-				$('inputForm').style.display = "none";
+			case "off":
+				$('mainContent').style.display = "none";
 				$('addNew').style.display = "inline";				
 				break;
 			case "off":
-				$('inputForm').style.display = "block";
+				$('mainContent').style.display = "block";
 				$('addNew').style.display = "none";	
 				$('items').style.display = "none";
 				break;
@@ -49,6 +49,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	function saveData(){
 		var id			= Math.floor(Math.random()*100000001);
+		getCheckboxValue();
 		var item 		= {};
 			item.date	= ["Date:", $('captureDate').value];
 			item.family	= ["Family:", $('family').value];
@@ -62,6 +63,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getData(){
+		toggleControls("off");
+		if(localStorage.length === 0){
+			alert("There are no pets");	
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
@@ -85,6 +90,18 @@ window.addEventListener("DOMContentLoaded", function(){
 		}		
 		
 	}
+	
+	function clearLocalStorage(){
+		if(localStorage.length === 0){
+			alert("There are not pets to clear.");
+		}else{
+			localStorage.clear();
+			alert("All pets are cleared");
+			window.location.reload();
+			return false;
+		}	
+	}
+	
 	var familyGroup = ["--Choose a family--", "Aquatic", "Beast", "Critter", "Dragonkin", "Elemental", "Flying", "Humanoid", "Magic", "Mechanical",
 			"Undead"],
 		favoriteValue="no";
@@ -97,8 +114,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	var showPets = $('showPetButton');
 	showPets.addEventListener("click", getData);
-	//var clearData = $();
-	//clearData.addEvenListener("click", clearLocal);
+	var clearData = $('clearPets');
+	clearData.addEventListener("click", clearLocalStorage);
 	var savePet = $('addPetButton');
 	savePet.addEventListener("click", saveData);
 	

@@ -18,7 +18,7 @@
 </head>	
 	<body>
 		<nav>
-			<a href="additem.html" id="addNew" style="display:none;">Add New Pet</a>
+			<a href="additem.html" id="addNew" style="display:none;">return!</a>
 		</nav>
 		<div id="mainContent" class="addPet">
 			<h1>Add Pets</h1>
@@ -29,11 +29,6 @@
 						<li><label for="date">Date acquired:    </label><input type="date" id="captureDate" placeholder="Enter date here."></li>
 						<li id="select"><label for="family">Family:   </label></li>
 						<li><label for="name">Name:</label><input type="text" id="name" size="40" placeholder="Type name of captured pet here." /></li>
-					
-<!--Note:  One of the required form types is "range".  I tried to use the range type, but
-it didnt make much sense in this specific application, so I changed the type to 
-"number" and used that in the next input field instead of "range".-->
-
 						<li><label for="level">Level:</label><input type="number" min="1" max="25" value="1" id="level" /></li>
 						<li>
 							<label for="quality">Quality:</label>
@@ -47,10 +42,9 @@ it didnt make much sense in this specific application, so I changed the type to
 						</li>
 						<li><input type="checkbox" id="favorite" /><label for="favorite">Check if this pet is one of your favorites.</label></li>
 						</ul>
-						<!-- <input type="hidden" id="id_entry" value="0" /> -->
 					<input type="button" id="addPetButton" value="Add pet"  />
 					<input type="button" id="showPetButton" value="Show pets" />
-					<input type="button" id="clearData" value="Clear data" />
+					<input type="button" id="clearPets" value="Clear data" />
 				</fieldset>		
 			</form>
 		</div>
