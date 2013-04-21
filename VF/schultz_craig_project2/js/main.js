@@ -1,5 +1,5 @@
 // Craig Schultz
-// Date:  April 13, 2013
+// Date:  April 20, 2013
 // Project 3
 // VFW 1304
 
@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				$('mainContent').style.display = "none";
 				$('addNew').style.display = "inline";				
 				break;
-			case "off":
+			case "on":
 				$('mainContent').style.display = "block";
 				$('addNew').style.display = "none";	
 				$('items').style.display = "none";
@@ -75,6 +75,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('items').style.display = "display";
 		for(var i=0, j=localStorage.length; i<j; i++){
 			var makeLi = document.createElement('li');
+			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -86,9 +87,55 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubLi.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi);
 		}		
 		
+	}
+	
+	// creates edit and delete links for each pet entry.
+	function makeItemLinks(key, linksLi){
+		//add the edit single entry link
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit this pet";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML=editText;
+		linksLi.appendChild(editLink);
+		
+		// add line break
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
+		//add the single pet entry delete link
+		var deleteLink = document.createElement('a');
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Pet";
+		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+		
+		
+	}
+	
+	function editItem(){
+		// Get the data for pet from localStorage
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		//show the form
+		toggleControls("on");
+		//populate form fields
+		$('captureDate').value = item.date[1];
+		$('family').value = item.family[1];
+		$('name').value = item.name[1];
+		$('level').value = item.level[1];
+		$('quality').value = item.qual[1];
+		if(item.fav[1] == "yes"){
+			$('favorite').setAttribute("checked", "checked");
+		}
 	}
 	
 	function clearLocalStorage(){
@@ -125,51 +172,3 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 
-/*var addButton = document.getElementById("addPetButton");
-var showButton = document.getElementById("showPetButton");
-var petList = document.createElement("ul");
-var petListBullet = document.createElement("li");
-var myDiv = document.getElementById("mainContent");
-var captureDate = document.getElementById("captureDate");
-var family = document.getElementById("family");
-var name = document.getElementById("name");
-var level = document.getElementById("level");
-var quality = document.getElementById("quality");
-var favorite = document.getElementById("favorite");
-var idEntry = document.getElementById("id_entry");
-var form = document.getElementById("inputForm");
-var pet = {};
-var myList = document.createElement("ul");
-
-var captureData = function(){
-	localStorage.setItem("Date Acquired", captureDate.value);
-	localStorage.setItem("Family", family.value);
-	localStorage.setItem("Pet Level", level.value);
-	localStorage.setItem("Pet Quality", quality.value);
-	localStorage.setItem("Favorite", favorite.value);
-	localStorage.setItem("id", idEntry.value);
-	localStorage.setItem("Pet Name", name.value);
-	
-	//alert("Pet was added to list");
-};
-
-var addPet = function(){
-	var ask = confirm("Add this pet to your list?");
-	if(ask){
-		captureData();
-	}
-	else{
-		alert("Pet was not added.");
-	}
-};
-
-var showPets = function(){
-	document.getElementById("mainContent").setAttribute("style", "display:none");
-	var petEntry = document.createElement("li");
-	petEntry.innerHTML = 
-};
-
-addButton.addEventListener("click", addPet);
-//showButton.addEventListener("click", showPets);
-
-*/
