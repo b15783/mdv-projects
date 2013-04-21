@@ -1,6 +1,6 @@
 // Craig Schultz
 // Date:  April 13, 2013
-// Project 2
+// Project 3
 // VFW 1304
 
 window.addEventListener("DOMContentLoaded", function(){
