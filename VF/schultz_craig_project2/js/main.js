@@ -47,8 +47,15 @@ window.addEventListener("DOMContentLoaded", function(){
 				return false;
 		}
 	}
-	function saveData(){
-		var id			= Math.floor(Math.random()*100000001);
+	function saveData(key){
+		// If there is no key, that means its a new item and a key is needed
+		if(!key){
+			var id			= Math.floor(Math.random()*100000001);
+		}else{
+			// Set the id to the existing key we're editing so that it will save over
+			id = key;
+		}
+		
 		getCheckboxValue();
 		var item 		= {};
 			item.date	= ["Date:", $('captureDate').value];
@@ -114,7 +121,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Pet";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 		
@@ -136,35 +143,108 @@ window.addEventListener("DOMContentLoaded", function(){
 		if(item.fav[1] == "yes"){
 			$('favorite').setAttribute("checked", "checked");
 		}
+		
+		// Remove initial listener from input 'save' button.
+		savePet.removeEventListener("click", saveData);
+		// Change the save button value to edit button
+		$('addPetButton').value = "Save";
+		var editSubmit = $('addPetButton');
+		// Save the key value established in this function as a property of the editSubmit
+		// event so we can use that value when we save the data we edited.
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+	}
+	
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this pet?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			alert("Pet was removed.");
+			window.location.reload();
+		}else{
+			alert("Pet was NOT deleted.")
+		}
 	}
 	
 	function clearLocalStorage(){
 		if(localStorage.length === 0){
 			alert("There are not pets to clear.");
 		}else{
-			localStorage.clear();
-			alert("All pets are cleared");
-			window.location.reload();
-			return false;
+			var ask = confirm("Are you sure you want to DELETE ALL your pets??");
+			if(ask){
+				localStorage.clear();
+				alert("All pets are cleared");
+				window.location.reload();
+				return false;
+			}else{
+				alert("Pets were not deleted.")
+			}	
 		}	
+	}
+	
+	function validate(e){
+		// Define the elements that we want to check
+		var getDate = $('captureDate');
+			getName = $('name');
+			getFamily = $('family');
+			
+		// Reset Error Messages
+		errMsg.innerHTML = "";
+		getFamily.style.border = "1px solid black";
+		getName.style.border = "1px solid black";
+		getDate.style.border = "1px solid black";			
+				
+		// Get error messages
+		var messageAry = [];
+		// Family validation
+		if(getFamily.value == "--Choose a family--"){
+			var familyError = "Please choose a family";
+			getFamily.style.border = "1px solid red";
+			messageAry.push(familyError);
+		}
+		
+		// Name vaildation
+		if(getName.value === ""){
+			var nameError = "Please enter a name for your pet.";
+			getName.style.border = "1px solid red";
+			messageAry.push(nameError);
+		}
+		
+		// Date validation
+		if(getDate.value === ""){
+			var dateError = "Please enter a date.";
+			getDate.style.border = "1px solid red";
+			messageAry.push(dateError);
+		}
+		
+		// If errors, display on screen
+		if(messageAry.length >= 1){
+			for(var i=0, j=messageAry.length; i<j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		}else{
+			saveData(this.key);
+		}
+		
 	}
 	
 	var familyGroup = ["--Choose a family--", "Aquatic", "Beast", "Critter", "Dragonkin", "Elemental", "Flying", "Humanoid", "Magic", "Mechanical",
 			"Undead"],
-		favoriteValue="no";
+		favoriteValue="no",
+		errMsg = $('errors');
 	
 	makeFamilyGroup();
-	
-	
-	
-	
-	
+		
 	var showPets = $('showPetButton');
 	showPets.addEventListener("click", getData);
 	var clearData = $('clearPets');
 	clearData.addEventListener("click", clearLocalStorage);
 	var savePet = $('addPetButton');
-	savePet.addEventListener("click", saveData);
+	savePet.addEventListener("click", validate);
 	
 
 });

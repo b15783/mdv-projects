@@ -72,4 +72,8 @@ ul {
 	margin: 20px; 
 	color:#00FFFF;
 }
+#errors{
+	color:#FF0000;
+	font-weight:bold;
+}
 /*ul li {list-style-image: url('images/arrow_sm.png');}*/
