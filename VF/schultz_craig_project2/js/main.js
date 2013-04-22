@@ -147,6 +147,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		// Remove initial listener from input 'save' button.
 		savePet.removeEventListener("click", saveData);
 		// Change the save button value to edit button
+		//***Note*** the instructions for the assignment said to make the button say 
+		//  "edit", but after testing my application, "edit" didnt seem appropriate, in 
+		//  i think "edit" would be confusing to a user.  I think that using the label
+		//  "save" makes a little more sense and would be more obvious to a user. so, 
+		// instead of labelling my button with "edit" I used "save" below.
 		$('addPetButton').value = "Save";
 		var editSubmit = $('addPetButton');
 		// Save the key value established in this function as a property of the editSubmit
