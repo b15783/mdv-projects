@@ -1,6 +1,6 @@
 // Craig Schultz
-// Date:  April 20, 2013
-// Project 3
+// Date:  April 29, 2013
+// Project 4
 // VFW 1304
 
 window.addEventListener("DOMContentLoaded", function(){
@@ -69,10 +69,20 @@ window.addEventListener("DOMContentLoaded", function(){
 			
 	}
 	
+	function autoFillExamplePets(){
+		//The JSON data used below is located in JSON.js
+		//Store JSON data into local storage
+		for(var n in json){
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+	
 	function getData(){
 		toggleControls("off");
 		if(localStorage.length === 0){
-			alert("There are no pets");	
+			alert("No pets have been added, example pets are loaded by default.");
+			autoFillExamplePets();	
 		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
