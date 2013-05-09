@@ -95,4 +95,8 @@ ul {
 	color:#FF0000;
 	font-weight:bold;
 }
+
+#startSearch{
+	float: right;
+}
 /*ul li {list-style-image: url('images/arrow_sm.png');}*/
